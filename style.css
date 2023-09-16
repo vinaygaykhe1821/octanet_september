@@ -1,246 +1,216 @@
-@import url('https://fonds.googleapis.com/css?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
-*
-{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-.main
-{
-  position: relative;
-  background: linear-gradient(120deg,#fff,#fff 62%,#3b5998 62%,#3b5998 100%);
-  min-height: 100vh;
-  padding:0 100px;
-  display: flex;
-  align-items: center;
-}
-header
-{
-  position:absolute;
-  top:0;
-  left: 0% ;
+body{
   width: 100%;
-  padding: 30px 100px;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, red, blue);
+}
+::selection{
+  color: #fff;
+  background: #3C87FF;
+}
+.wrapper{
+  max-width: 405px;
+  padding: 28px 0 30px;
+  margin: 137px auto;
+  background: white;
+  border-radius: 7px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.task-input{
+  height: 52px;
+  padding: 0 25px;
+  position: relative;
+}
+.task-input img{
+  top: 50%;
+  position: absolute;
+  transform: translate(17px, -50%);
+}
+.task-input input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 0 20px 0 53px;
+  border: 1px solid #999;
+}
+.task-input input:focus,
+.task-input input.active{
+  padding-left: 52px;
+  border: 2px solid #3C87FF;
+}
+.task-input input::placeholder{
+  color: #bfbfbf;
+}
+.controls, li{
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: space-between;
 }
-header .logo img
-{
-    max-width: 50px;
-    margin-right: 20px;
+.controls{
+  padding: 18px 25px;
+  border-bottom: 1px solid #ccc;
 }
-header ul
-{
-    display: flex;
+.filters span{
+  margin: 0 8px;
+  font-size: 17px;
+  color: #444444;
+  cursor: pointer;
 }
-header ul li
-{
-    list-style: none;
-    margin: 0 10px;
+.filters span:first-child{
+  margin-left: 0;
 }
-header ul li a
-{
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
+.filters span.active{
+  color: #3C87FF;
 }
-header ul li a:hover ,
-header ul li a.active
-{
-    color: #2d88ff;
+.controls .clear-btn{
+  border: none;
+  opacity: 0.6;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 7px 13px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+  pointer-events: none;
+  transition: transform 0.25s ease;
+  background: linear-gradient(135deg, #1798fb 0%, #2D5CFE 100%);
 }
-.app
-{
-    position: absolute;
-    right: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-    color: #3b5998;
-    padding: 10px;
-    border-radius: 5px;
-    text-decoration:none ;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1) ;
+.clear-btn.active{
+  opacity: 0.9;
+  pointer-events: auto;
 }
-.app:hover
-{
-    background: #2d88ff;
-    color: #fff;
+.clear-btn:active{
+  transform: scale(0.93);
 }
-.app ion-icon
-{
-    margin-right: 10px;
-    font-size: 1.4em;
+.task-box{
+  margin-top: 20px;
+  margin-right: 5px;
+  padding: 0 20px 10px 25px;
 }
-.contentBx
-{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    /*justify-content: space-between;*/ /* imge and download btn gap */
+.task-box.overflow{
+  overflow-y: auto;
+  max-height: 300px;
 }
-.contentBx .text
-{
-max-width: 800px;
+.task-box::-webkit-scrollbar{
+  width: 5px;
 }
-.contentBx .text h2
-{
-    font-size: 6em;
-    color: #3b5998;
+.task-box::-webkit-scrollbar-track{
+  background: #f1f1f1;
+  border-radius: 25px;
 }
-.contentBx .text p
-{
- font-size: 1.1em;
- color: #333;
- line-height: 1.8em;
+.task-box::-webkit-scrollbar-thumb{
+  background: #e6e6e6;
+  border-radius: 25px;
 }
-.contentBx .text h4
-{
-margin-top: 20px;
-margin-bottom: 20px;
-font-weight: 700;
-color: #333;
+.task-box .task{
+  list-style: none;
+  font-size: 17px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  align-items: flex-start;
+  border-bottom: 1px solid #ccc;
 }
-.btn
-{
-    background: #3b5998;
-    color: #fff;
-    display: inline-flex;
-    text-decoration:none ;
-    padding: 10px 15px;
-    font-size: 1.1em;
-    margin: 5px 20px 5px 0;
-    border-radius: 7px;
+.task-box .task:last-child{
+  margin-bottom: 0;
+  border-bottom: 0;
+  padding-bottom: 0;
 }
-.btn:hover
-{
-    background: #2d88ff;
+.task-box .task label{
+  display: flex;
+  align-items: flex-start;
 }
-.btn ion-icon
-{
-    margin-right: 10px;
-    font-size: 1.4em; ;
+.task label input{
+  margin-top: 7px;
+  accent-color: #3C87FF;
 }
-.imgBx img
-{
-margin-left: 20px; /* imge and download btn gap */
-margin-right: 100px;
-max-width: 300px;
-display: none;
+.task label p{
+  user-select: none;
+  margin-left: 12px;
+  word-wrap: break-word;
 }
-.imgBx img.active
-{
- display: block;
+.task label p.checked{
+  text-decoration: line-through;
 }
-.dots
-{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%) ;
-    right: 80px;
-    display: flex;
-    flex-direction: column;
+.task-box .settings{
+  position: relative;
 }
-.dots .dot
-{
-    position: relative;
-    width: 10px;
-    height: 30px;
-    background: rgba(255,255,255,0.25);
-    display: inline-flex;
-    margin: 5px;
-    cursor: pointer;
+.settings :where(i, li){
+  cursor: pointer;
 }
-.dots .dot.active
-{
-    background: #fff;
+.settings .task-menu{
+  z-index: 10;
+  right: -5px;
+  bottom: -65px;
+  padding: 5px 0;
+  background: #fff;
+  position: absolute;
+  border-radius: 4px;
+  transform: scale(0);
+  transform-origin: top right;
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
 }
-.sci
-{
-    position: absolute;
-    bottom: 30px;
-    display: flex;
+.task-box .task:last-child .task-menu{
+  bottom: 0;
+  transform-origin: bottom right;
 }
-.sci li
-{
-    list-style: none;
-    margin-right: 20px;
+.task-box .task:first-child .task-menu{
+  bottom: -65px;
+  transform-origin: top right;
 }
-.sci li a
-{
- font-size: 1.8em;
- color: #3b5998;
+.task-menu.show{
+  transform: scale(1);
 }
-.sci li a:hover
-{
-    color: #2d88ff;
+.task-menu li{
+  height: 25px;
+  font-size: 16px;
+  margin-bottom: 2px;
+  padding: 17px 15px;
+  cursor: pointer;
+  justify-content: flex-start;
+}
+.task-menu li:last-child{
+  margin-bottom: 0;
+}
+.settings li:hover{
+  background: #f5f5f5;
+}
+.settings li i{
+  padding-right: 8px;
 }
 
-/* now make it full responsive  */
-@media(max-width:991px)
-{
-    header
-    {
-        padding: 30px;
-        justify-content: space-between;
-    }
-    .main
-    {
-        padding: 30px;
-        background: #fff;
-    }
-    .app
-    {
-        display: none;
-    }
-    .contentBx
-    {
-        flex-direction: column-reverse;
-        margin: 100px 0;
-    }
-    .imgBx
-    {
-        margin: 0;
-    }
-    .dots
-    {
-        position: relative;
-        top: initial;
-        transform: none;
-        right: initial;
-        display: flex;
-        flex-direction: row;
-        margin-top: 20px;
-    }
-    .dots .dot
-    {
-        width:25px;
-        height: 10px;
-        background: #3b5998;
-        opacity: 0.2;
-    }
-    .dots .dot.active
-    {
-      background: #3b5998;
-      opacity: 0.1;
-    }
-    .contentBx .text
-    {
-        text-align: center;
-    }
-    .contentBx .text h2
-    {
-        font-size: 3em;
-    }
-    .sci
-    {
-        position: absolute;
-        bottom: 30px;
-        display: flex;
-        left: 50%;
-        transform: translate(-50%);
-    }
+@media (max-width: 400px) {
+  body{
+    padding: 0 10px;
+  }
+  .wrapper {
+    padding: 20px 0;
+  }
+  .filters span{
+    margin: 0 5px;
+  }
+  .task-input{
+    padding: 0 20px;
+  }
+  .controls{
+    padding: 18px 20px;
+  }
+  .task-box{
+    margin-top: 20px;
+    margin-right: 5px;
+    padding: 0 15px 10px 20px;
+  }
+  .task label input{
+    margin-top: 4px;
+  }
 }
